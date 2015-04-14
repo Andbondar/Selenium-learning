@@ -1,5 +1,6 @@
 package HomeWork02;
 
+import Checks.CompareArrays;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -8,8 +9,6 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
-
-import static org.junit.Assert.assertTrue;
 
 /**
  * Created by bondar on 4/14/2015.
@@ -52,15 +51,6 @@ public class KapeluhTests {
         System.out.println("List of categories on Catalogue page:");
         System.out.println(categoriesArrayCatalogue);
 
-        flag = categoriesArrayCatalogue.equals(categoriesArray);
-        assertTrue("Lists of categories on Start page and on Catalogue page are not equal", flag);
-        //print difference to console
-        for (int i = 1; i < numberOfCategoriesCatalogue; i++){
-            if (!(categoriesArrayCatalogue.get(i).equals(categoriesArray.get(i)))){
-                System.out.println("Element " + categoriesArrayCatalogue.get(i) + "(#" + i + ") is not equal to element from source category list " + categoriesArray.get(i));
-                System.out.println("First difference returned");
-                break;
-            }
-        }
+        CompareArrays.compareArrayLists("Lists of categories on Start page and on Catalogue page are not equal", categoriesArrayCatalogue, categoriesArray);
     }
 }
