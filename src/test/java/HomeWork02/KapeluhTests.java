@@ -8,6 +8,7 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
 import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 import static org.junit.Assert.assertTrue;
@@ -34,26 +35,26 @@ public class KapeluhTests {
 
         int numberOfCategories = driver.findElements(By.xpath("//a[contains(@href,'category')]")).size();
         //String[] array of categories on the start page
-        ArrayList<String> categoriesArray = new ArrayList<String>();
+        List<String> categoriesArray = new ArrayList<String>();
         //i - number of match for xPath
         for (int i = 1; i <= numberOfCategories; i++){
             categoriesArray.add(driver.findElement(By.xpath("(//a[contains(@href,'category')])[" + i + "]")).getText());
         }
-        System.out.println("List of categories on Start page:");
+        System.out.println("List of categories on Start page(" + categoriesArray.size() + "):");
         System.out.println(categoriesArray);
 
         //open Catalogue
         driver.get(baseURL + "frontpage/produktsiya");
         int numberOfCategoriesCatalogue = driver.findElements(By.xpath(".//div[@class = 'category']//a[contains(@href,'category')]")).size();
-        ArrayList<String> categoriesArrayCatalogue = new ArrayList<String>();
+        List<String> categoriesArrayCatalogue = new ArrayList<String>();
         //i - number of match for xPath
         for (int i = 1; i <= numberOfCategoriesCatalogue; i++){
-            categoriesArrayCatalogue.add(driver.findElement(By.xpath("(//a[contains(@href,'category')])[" + i + "]")).getText());
+            categoriesArrayCatalogue.add(driver.findElement(By.xpath("(.//div[@class = 'category']//a[contains(@href,'category')])[" + i + "]")).getText());
         }
-        System.out.println("List of categories on Catalogue page:");
+        System.out.println("List of categories on Catalogue page(" + categoriesArrayCatalogue.size() + "):");
         System.out.println(categoriesArrayCatalogue);
 
-        //compareArrayLists method is used to return boolean value and track the difference between arrays (e.g. by size or by specific element)
-        assertTrue("Lists of categories on Start page and on Catalogue page are not equal", CompareArrays.compareArrayLists(categoriesArrayCatalogue, categoriesArray));
+        //compareListsAsStringArrays method is used to return boolean value and track the difference between arrays (e.g. by size or by specific element)
+        assertTrue("Lists of categories on Start page and on Catalogue page are not equal", CompareArrays.compareListsAsStringArrays(categoriesArrayCatalogue, categoriesArray));
     }
 }

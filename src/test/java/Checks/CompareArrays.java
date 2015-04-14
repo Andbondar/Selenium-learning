@@ -1,5 +1,6 @@
 package Checks;
 
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -7,20 +8,30 @@ import java.util.List;
  */
 public class CompareArrays {
     //return boolean + print difference to console if it is present (size or specific element = 1st occurred difference)
-    public static boolean compareArrayLists(List array1, List array2){
-        if (array1.size() != array2.size()){
-            System.out.println("Arrays sizes are not equal: " + array1.size() + " and " + array2.size() + " elements correspondingly.");
+    public static boolean compareListsAsStringArrays(List<String> expectedList, List<String> inputList){
+        String[] expectedArray = new String[expectedList.size()];
+        String[] inputArray = new String[inputList.size()];
+        expectedArray = expectedList.toArray(expectedArray);
+        inputArray = inputList.toArray(inputArray);
+        return compareStringArrays(expectedArray, inputArray);
+    }
+
+    public static boolean compareStringArrays(String[] expectedArray, String[] inputArray){
+        if (expectedArray.length != inputArray.length){
+            System.out.println("Arrays sizes are not equal: " + expectedArray.length + " and " + inputArray.length + " elements correspondingly.");
+            return false;
         }
         else { //print difference to console
-            for (int i = 0; i < array1.size(); i++){
-                if (!(array1.get(i).equals(array2.get(i)))){
-                    System.out.println("Element " + array1.get(i) + "(#" + (i+1) + ") is not equal to element from source list " + array2.get(i));
+            for (int i = 0; i < expectedArray.length; i++){
+
+                if (!Arrays.asList(expectedArray).contains(inputArray[i])){
+                    System.out.println("Element \"" + inputArray[i] + "\"(#" + (i+1) + ") is absent in the expected array.");
                     System.out.println("First difference returned");
-                    break;
+                    return false;
                 }
             }
         }
-        return array1.equals(array2);
+        return true;
     }
 
 }
