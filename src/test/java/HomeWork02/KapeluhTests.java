@@ -10,6 +10,8 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 import java.util.ArrayList;
 import java.util.concurrent.TimeUnit;
 
+import static org.junit.Assert.assertTrue;
+
 /**
  * Created by bondar on 4/14/2015.
  */
@@ -51,6 +53,7 @@ public class KapeluhTests {
         System.out.println("List of categories on Catalogue page:");
         System.out.println(categoriesArrayCatalogue);
 
-        CompareArrays.doArrayListComparison("Lists of categories on Start page and on Catalogue page are not equal", categoriesArrayCatalogue, categoriesArray);
+        //compareArrayLists method is used to return boolean value and track the difference between arrays (e.g. by size or by specific element)
+        assertTrue("Lists of categories on Start page and on Catalogue page are not equal", CompareArrays.compareArrayLists(categoriesArrayCatalogue, categoriesArray));
     }
 }

@@ -2,12 +2,11 @@ package Checks;
 
 import java.util.List;
 
-import static org.junit.Assert.assertTrue;
-
 /**
  * Created by bondar on 4/14/2015.
  */
 public class CompareArrays {
+    //return boolean + print difference to console if it is present (size or specific element = 1st occurred difference)
     public static boolean compareArrayLists(List array1, List array2){
         if (array1.size() != array2.size()){
             System.out.println("Arrays sizes are not equal: " + array1.size() + " and " + array2.size() + " elements correspondingly.");
@@ -24,8 +23,4 @@ public class CompareArrays {
         return array1.equals(array2);
     }
 
-    public static void doArrayListComparison(String nonEqualMessage, List array1, List array2){
-        boolean flag = compareArrayLists(array1, array2);
-        assertTrue(nonEqualMessage, flag);//fail test if lists are not equal
-    }
 }
