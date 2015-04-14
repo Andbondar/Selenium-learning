@@ -51,6 +51,6 @@ public class KapeluhTests {
         System.out.println("List of categories on Catalogue page:");
         System.out.println(categoriesArrayCatalogue);
 
-        CompareArrays.compareArrayLists("Lists of categories on Start page and on Catalogue page are not equal", categoriesArrayCatalogue, categoriesArray);
+        CompareArrays.doArrayListComparison("Lists of categories on Start page and on Catalogue page are not equal", categoriesArrayCatalogue, categoriesArray);
     }
 }
