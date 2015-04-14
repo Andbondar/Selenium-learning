@@ -41,7 +41,7 @@ public class KapeluhTests {
         System.out.println(categoriesArray);
 
         //open Catalogue
-        driver.get("http://kapeluh.com.ua/frontpage/produktsiya");
+        driver.get(baseURL + "frontpage/produktsiya");
         int numberOfCategoriesCatalogue = driver.findElements(By.xpath(".//div[@class = 'category']//a[contains(@href,'category')]")).size();
         ArrayList<String> categoriesArrayCatalogue = new ArrayList<String>();
         //i - number of match for xPath
