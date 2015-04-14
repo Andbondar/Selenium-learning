@@ -54,7 +54,7 @@ public class KapeluhTests {
         System.out.println("List of categories on Catalogue page(" + categoriesArrayCatalogue.size() + "):");
         System.out.println(categoriesArrayCatalogue);
 
-        //compareListsAsStringArrays method is used to return boolean value and track the difference between arrays (e.g. by size or by specific element)
-        assertTrue("Lists of categories on Start page and on Catalogue page are not equal", CompareArrays.compareListsAsStringArrays(categoriesArrayCatalogue, categoriesArray));
+        //compareListsByElements method is used to return boolean value and track the difference between arrays (e.g. by size or by specific element)
+        assertTrue("Lists of categories on Start page and on Catalogue page are not equal", CompareArrays.compareListsByElements(categoriesArrayCatalogue, categoriesArray));
     }
 }
