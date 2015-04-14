@@ -40,8 +40,9 @@ public class XMLParser {
         return arrStrings;
     }
 
-    public static void getInfoByTag(String inputFile, String tag){
+    public static List getInfoByTag(String inputFile, String tag){
         String xPath = "//" + tag;
         System.out.println(getXMLInfoByXPath(inputFile, xPath));
+        return getXMLInfoByXPath(inputFile, xPath);
     }
 }
