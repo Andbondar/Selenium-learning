@@ -31,12 +31,11 @@ public class KapeluhTests {
     public void verifyCategoryList(){
         driver.get(baseURL);
         driver.manage().window().maximize();
-        boolean flag;
 
         int numberOfCategories = driver.findElements(By.xpath("//a[contains(@href,'category')]")).size();
-        //String[] array of categories on the start page
+        //ArrayList of categories on the start page
         List<String> categoriesArray = new ArrayList<String>();
-        //i - number of match for xPath
+        //i - number of match for xPath, so we start count from 1
         for (int i = 1; i <= numberOfCategories; i++){
             categoriesArray.add(driver.findElement(By.xpath("(//a[contains(@href,'category')])[" + i + "]")).getText());
         }
