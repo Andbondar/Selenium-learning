@@ -3,6 +3,7 @@ package HomeWork02;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
@@ -54,9 +55,8 @@ public class MailRuTests {
 
         driver.findElement(By.xpath(".//input[@name=\"Subject\"]")).sendKeys("Test letter");
         //text
-        driver.switchTo().frame("compose_272_composeEditor_ifr");
-        //driver.findElement(By.xpath(".//*[@id=\"tinymce\"]")).clear();
-        driver.findElement(By.xpath(".//textarea[@id=\"compose_272_composeEditor\"]")).sendKeys("Test send keys" + Keys.RETURN);//text is not entered cause element is not found
-
+        if (driver instanceof JavascriptExecutor) {
+            ((JavascriptExecutor) driver).executeScript("window.parent.tinyMCE.activeEditor.setContent(\"Andrew\");");
+        }
     }
 }
