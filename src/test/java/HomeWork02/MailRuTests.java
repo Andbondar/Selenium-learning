@@ -8,8 +8,10 @@ import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
+import java.io.IOException;
 import java.util.concurrent.TimeUnit;
 
+import static InputProcessing.TextParser.getTextFromTXTFile;
 import static InputProcessing.XMLParser.getInfoByTag;
 import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertTrue;
@@ -34,6 +36,16 @@ public class MailRuTests {
     public void SendReceiveEmail() {
         driver.get(baseURL);
         driver.manage().window().maximize();
+        //text for our letter
+        String textMessage = "";
+        try{
+            textMessage = getTextFromTXTFile("D:\\read.txt");
+        } catch (IOException e){
+            e.printStackTrace();
+        }
+        //temporary fix to combine all the text into solid string without breaks
+        textMessage = textMessage.replace("\n", "<br>").replace("\r", "<br>").replace("<br><br>", "<br>");
+        //textMessage = textMessage.replace("<br><br>", "<br>");
 
         //login
         driver.findElement(By.xpath(".//*[@id='mailbox__login']")).clear();
@@ -56,7 +68,7 @@ public class MailRuTests {
         driver.findElement(By.xpath(".//input[@name=\"Subject\"]")).sendKeys("Test letter");
         //text
         if (driver instanceof JavascriptExecutor) {
-            ((JavascriptExecutor) driver).executeScript("window.parent.tinyMCE.activeEditor.setContent(\"Andrew\");");
+            ((JavascriptExecutor) driver).executeScript("window.parent.tinyMCE.activeEditor.setContent('" + textMessage + "');");
         }
     }
 }
