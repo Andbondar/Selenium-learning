@@ -70,7 +70,6 @@ public class KapeluhTests {
             assertTrue("Wrong category name: " + categoriesList.get(i-1),categoriesList.get(i-1).matches("[\\p{IsCyrillic}-]+"));
             //it will fail if sibling node with count will not be found
             String correspondingNumber = driver.findElement(By.xpath("(.//div[@class=\"category\"]//a)[" + i + "]/following-sibling::span")).getText();
-            System.out.println(correspondingNumber);
             assertTrue("Wrong count format for category: " + categoriesList.get(i-1) + correspondingNumber, correspondingNumber.matches("\\([0-9]+\\)"));
         }
     }
