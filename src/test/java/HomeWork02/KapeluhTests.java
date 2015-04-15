@@ -1,6 +1,7 @@
 package HomeWork02;
 
 import Checks.CompareArrays;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -55,5 +56,27 @@ public class KapeluhTests {
 
         //compareListsByElements method is used to return boolean value and track the difference between arrays (e.g. by size or by specific element)
         assertTrue("Lists of categories on Start page and on Catalogue page are not equal", CompareArrays.compareListsByElements(categoriesArrayCatalogue, categoriesArray));
+    }
+
+    @Test
+    public void verifyCategoryFormat(){
+        driver.get(baseURL + "frontpage/produktsiya");
+        driver.manage().window().maximize();
+
+        int numberOfCategories = driver.findElements(By.xpath(".//div[@class=\"category\"]//a")).size();
+        List<String> categoriesList = new ArrayList<>();
+        for (int i = 1; i <= numberOfCategories; i++){
+            categoriesList.add(driver.findElement(By.xpath("(.//div[@class=\"category\"]//a)[" + i + "]")).getText());
+            assertTrue("Wrong category name: " + categoriesList.get(i-1),categoriesList.get(i-1).matches("[\\p{IsCyrillic}-]+"));
+            //it will fail if sibling node with count will not be found
+            String correspondingNumber = driver.findElement(By.xpath("(.//div[@class=\"category\"]//a)[" + i + "]/following-sibling::span")).getText();
+            System.out.println(correspondingNumber);
+            assertTrue("Wrong count format for category: " + categoriesList.get(i-1) + correspondingNumber, correspondingNumber.matches("\\([0-9]+\\)"));
+        }
+    }
+
+    @After
+    public void tearDown(){
+        driver.close();
     }
 }
