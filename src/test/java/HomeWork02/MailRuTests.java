@@ -1,9 +1,9 @@
 package HomeWork02;
 
-import junit.framework.Assert;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
 
@@ -19,8 +19,8 @@ import static junit.framework.Assert.assertTrue;
 public class MailRuTests {
     private WebDriver driver;
     private String baseURL;
-    String login = String.valueOf(getInfoByTag("D:\\mailru_user.txt", "login").get(0));
-    String password = String.valueOf(getInfoByTag("D:\\mailru_user.txt", "pass").get(0));
+    String login = String.valueOf(getInfoByTag("D:\\config_mailru.xml", "login").get(0));
+    String password = String.valueOf(getInfoByTag("D:\\config_mailru.xml", "pass").get(0));
 
     @Before
     public void setUp(){
@@ -30,7 +30,7 @@ public class MailRuTests {
     }
 
     @Test
-    public void verifyCategoryList() {
+    public void SendReceiveEmail() {
         driver.get(baseURL);
         driver.manage().window().maximize();
 
@@ -47,14 +47,16 @@ public class MailRuTests {
         //"write letter" button
         driver.findElement(By.xpath(".//*[@id='b-toolbar__left']//a")).click();
         //check that page is changed and new one is a page for letter writing
-        assertTrue(driver.getCurrentUrl().matches("compose"));
+        assertTrue("Page is not changed", driver.getCurrentUrl().matches(".*compose.*"));
         driver.findElement(By.xpath(".//textarea[@data-original-name=\"To\"]")).clear();
         driver.findElement(By.xpath(".//textarea[@data-original-name=\"To\"]")).click();
-        driver.findElement(By.xpath(".//textarea[@data-original-name=\"To\"]")).sendKeys(login + "@mail.ru");//error here
+        driver.findElement(By.xpath(".//textarea[@data-original-name=\"To\"]")).sendKeys(login + "@mail.ru" + Keys.RETURN);
+
         driver.findElement(By.xpath(".//input[@name=\"Subject\"]")).sendKeys("Test letter");
         //text
-        driver.findElement(By.xpath(".//*[@id='tinymce']")).clear();
-        driver.findElement(By.xpath(".//*[@id='tinymce']")).sendKeys("Test send keys");
+        driver.switchTo().frame("compose_272_composeEditor_ifr");
+        //driver.findElement(By.xpath(".//*[@id=\"tinymce\"]")).clear();
+        driver.findElement(By.xpath(".//textarea[@id=\"compose_272_composeEditor\"]")).sendKeys("Test send keys" + Keys.RETURN);//text is not entered cause element is not found
 
     }
 }
