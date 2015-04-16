@@ -1,5 +1,6 @@
 package HomeWork02;
 
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
@@ -87,5 +88,10 @@ public class MailRuTests {
         //assertTrue("Letter was not sent today", flag);
 
         //check for text in received letter can be added
+    }
+
+    @After
+    public void tearDown(){
+        driver.close();
     }
 }
