@@ -3,8 +3,11 @@ import org.junit.Before;
 import org.junit.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.firefox.FirefoxDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 
+import java.io.File;
 import java.util.concurrent.TimeUnit;
 
 /**
@@ -16,7 +19,7 @@ public class Test01 extends PageInstance {
 
     @Before
     public void setUp(){
-        driver = new FirefoxDriver();
+        setChDriver();
         baseURL = "http://ya.ru/";
         driver.manage().timeouts().implicitlyWait(30, TimeUnit.SECONDS);
     }
@@ -31,5 +34,19 @@ public class Test01 extends PageInstance {
 
         driver.findElement(By.xpath(".//*[@id='text']")).sendKeys("Test search");
         driver.findElement(By.xpath("//*[@type=\"submit\"]")).click();
+    }
+
+    public void setFFDriver(){
+        this.driver = new FirefoxDriver();
+    }
+    public void setIEDriver(){
+        File file = new File("tools/IEDriverServer.exe");
+        System.setProperty("webdriver.ie.driver", file.getAbsolutePath());
+        driver = new InternetExplorerDriver();
+    }
+    public void setChDriver(){
+        File file = new File("tools/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", file.getAbsolutePath());
+        driver = new ChromeDriver();
     }
 }
