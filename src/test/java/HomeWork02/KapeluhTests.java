@@ -35,7 +35,7 @@ public class KapeluhTests {
 
         int numberOfCategories = driver.findElements(By.xpath("//a[contains(@href,'category')]")).size();
         //ArrayList of categories on the start page
-        List<String> categoriesArray = new ArrayList<String>();
+        List<String> categoriesArray = new ArrayList<String>(numberOfCategories);//default size for ArrayList. Performance upgrade
         //i - number of match for xPath, so we start count from 1
         for (int i = 1; i <= numberOfCategories; i++){
             categoriesArray.add(driver.findElement(By.xpath("(//a[contains(@href,'category')])[" + i + "]")).getText());
@@ -46,7 +46,7 @@ public class KapeluhTests {
         //open Catalogue
         driver.get(baseURL + "frontpage/produktsiya");
         int numberOfCategoriesCatalogue = driver.findElements(By.xpath(".//div[@class = 'category']//a[contains(@href,'category')]")).size();
-        List<String> categoriesArrayCatalogue = new ArrayList<String>();
+        List<String> categoriesArrayCatalogue = new ArrayList<String>(numberOfCategoriesCatalogue);
         //i - number of match for xPath
         for (int i = 1; i <= numberOfCategoriesCatalogue; i++){
             categoriesArrayCatalogue.add(driver.findElement(By.xpath("(.//div[@class = 'category']//a[contains(@href,'category')])[" + i + "]")).getText());
