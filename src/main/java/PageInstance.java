@@ -15,6 +15,7 @@ public class PageInstance {
     protected Page page;
     protected StartPage startPage;
     protected String baseURL;
+    protected ResultsPage resultsPage;
 
     public void setBaseURL(String baseURL){
         this.baseURL = baseURL;

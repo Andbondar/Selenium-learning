@@ -13,7 +13,7 @@ import java.util.concurrent.TimeUnit;
 /**
  * Created by Student on 4/10/2015.
  */
-public class Test01 extends PageInstance {
+public class Test01_yandex extends PageInstance {
     private WebDriver driver;
     private String baseURL;
 

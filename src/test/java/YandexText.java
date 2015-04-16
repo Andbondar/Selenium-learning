@@ -10,13 +10,14 @@ public class YandexText extends PageInstance{
     @Before
     public void setUp(){
         setBrowser("FF");
+        startPage = new StartPage(driver);
     }
 
     @Test
     public void testYaRu(){
-        StartPage startPage = new StartPage(driver);
         startPage.open();
-        ResultsPage resultsPage = startPage.sendSearchRequest("Test search");
+        resultsPage = startPage.sendSearchRequest("Test search");
+        resultsPage.resultList().get(0).getLink().click();
     }
 
 
