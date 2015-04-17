@@ -1,6 +1,7 @@
 package HomeWork03;
 
 import MailRu.StartPage;
+import org.junit.After;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -29,5 +30,10 @@ public class MailRuTests extends MailRu.PageInstance{
 
         int updatedMailCount = emailPage.getCurrentUnreadCount();
         Assert.assertTrue("Mail count was not changed. New letter was not received.", updatedMailCount > initialMailCount);
+    }
+
+    @After
+    public void tearDown(){
+        driver.close();
     }
 }
