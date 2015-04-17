@@ -1,3 +1,5 @@
+package YandexUa;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
@@ -21,7 +23,7 @@ public class ResultsPage {
         return new ResultsPage(this.driver);
     }
 
-    protected List<ResultItem> resultList(){
+    public List<ResultItem> resultList(){
         List<ResultItem> returnedList = new ArrayList<>();
         List<WebElement> webElementsList = driver.findElements(By.xpath(".//*[@class=\"serp-item__wrap clearfix\" and descendant::h2]"));
         for (WebElement element: webElementsList){
