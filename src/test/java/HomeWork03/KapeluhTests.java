@@ -1,6 +1,7 @@
 package HomeWork03;
 
 import Kapeluh.StartPage;
+import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -22,5 +23,10 @@ public class KapeluhTests extends Kapeluh.PageInstance{
         cataloguePage = startPage.openCatalogue();
         damskieShlyapki = cataloguePage.openDamskieShlyapki();
         damskieShlyapki.checkTeaserItemsStructure();
+    }
+
+    @After
+    public void tearDown(){
+        driver.close();
     }
 }
