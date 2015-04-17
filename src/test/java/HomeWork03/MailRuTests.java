@@ -20,8 +20,8 @@ public class MailRuTests extends MailRu.PageInstance{
     public void sendReceiveEmail(){
         startPage.open();
         emailPage = startPage.loginToMail("seleniumlearning", "SeleniumLearning!23");
-        writeLetter = emailPage.writeLetter();
         int initialMailCount = emailPage.getCurrentUnreadCount();
+        writeLetter = emailPage.writeLetter();
 
         writeLetter.addReceiver("seleniumlearning@mail.ru");
         writeLetter.addSubject("New test letter");
