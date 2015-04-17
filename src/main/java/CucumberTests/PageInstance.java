@@ -1,4 +1,4 @@
-package YandexUa;
+package CucumberTests;
 
 import com.gargoylesoftware.htmlunit.Page;
 import org.openqa.selenium.WebDriver;
@@ -13,18 +13,18 @@ import java.util.concurrent.TimeUnit;
  * Created by Student on 4/15/2015.
  */
 public class PageInstance {
-    protected WebDriver driver;
-    protected Page page;
-    protected StartPage startPage;
-    protected String baseURL;
-    protected ResultsPage resultsPage;
+    protected static WebDriver driver;
+    protected static Page page;
+    protected static StartPage startPage;
+    protected static String baseURL;
+    protected static ResultsPage resultsPage;
 
     public void setBaseURL(String baseURL){
         this.baseURL = baseURL;
     }
 
 
-    public void setBrowser(String browser){
+    public static void setBrowser(String browser){
         File file;
         switch (browser.toLowerCase()){
             case "ie":

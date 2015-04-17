@@ -1,5 +1,5 @@
-import YandexUa.PageInstance;
-import YandexUa.StartPage;
+import CucumberTests.PageInstance;
+import CucumberTests.StartPage;
 import org.junit.After;
 import org.junit.Before;
 import org.junit.Test;

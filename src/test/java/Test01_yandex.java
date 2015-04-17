@@ -1,4 +1,4 @@
-import YandexUa.PageInstance;
+import CucumberTests.PageInstance;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
