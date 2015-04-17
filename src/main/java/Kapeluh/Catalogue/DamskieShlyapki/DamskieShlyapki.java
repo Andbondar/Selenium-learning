@@ -27,7 +27,7 @@ public class DamskieShlyapki {
         return returnedList;
     }
 
-    public void checkTeaserItems(){
+    public void checkTeaserItemsStructure(){
         this.teaserItems = getTeaserItems();
         for (TeaserItem teaserItem : teaserItems){
             teaserItem.checkStructure();

@@ -21,6 +21,6 @@ public class KapeluhTests extends Kapeluh.PageInstance{
         startPage.open();
         cataloguePage = startPage.openCatalogue();
         damskieShlyapki = cataloguePage.openDamskieShlyapki();
-        damskieShlyapki.checkTeaserItems();
+        damskieShlyapki.checkTeaserItemsStructure();
     }
 }
