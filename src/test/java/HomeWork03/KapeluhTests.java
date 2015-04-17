@@ -9,7 +9,6 @@ import org.junit.Test;
  * Created by bondar on 4/16/2015.
  */
 public class KapeluhTests extends Kapeluh.PageInstance{
-    private String baseURL;
 
     @Before
     public void setUp(){
