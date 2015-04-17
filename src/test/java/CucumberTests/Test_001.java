@@ -16,7 +16,7 @@ import org.openqa.selenium.WebDriver;
 @CucumberOptions(
         features={"src/test/resources"},
         glue = {"CucumberTests"},
-        format = {"pretty", "html:Folder_Name"},
+        format = {"pretty", "html:target/cucumberHTMLReport"},
         tags = { "@Test" }
 )
 
