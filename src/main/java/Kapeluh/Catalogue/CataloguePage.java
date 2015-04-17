@@ -1,5 +1,6 @@
 package Kapeluh.Catalogue;
 
+import Kapeluh.Catalogue.DamskieShlyapki.DamskieShlyapki;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 

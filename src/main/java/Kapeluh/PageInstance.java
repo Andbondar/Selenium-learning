@@ -1,7 +1,7 @@
 package Kapeluh;
 
 import Kapeluh.Catalogue.CataloguePage;
-import Kapeluh.Catalogue.DamskieShlyapki;
+import Kapeluh.Catalogue.DamskieShlyapki.DamskieShlyapki;
 import com.gargoylesoftware.htmlunit.Page;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
